@@ -19,7 +19,7 @@ public class Parque implements IParque{
 
 
 	@Override
-	public void entrarAlParque(String puerta){		// TODO
+	public synchronized void entrarAlParque(String puerta){		
 		
 		// Si no hay entradas por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
@@ -27,6 +27,7 @@ public class Parque implements IParque{
 		}
 		
 		// TODO
+		
 				
 		
 		// Aumentamos el contador total y el individual
@@ -74,8 +75,8 @@ public class Parque implements IParque{
 	
 	protected void checkInvariante() {
 		assert sumarContadoresPuerta() == contadorPersonasTotales : "INV: La suma de contadores de las puertas debe ser igual al valor del contador del parte";
-		// TODO 
-		// TODO
+		assert contadorPersonasTotales < 51 : "INV: El aforo máximo es de 50";
+		assert contadorPersonasTotales >= 0 : "INV: El aforo mínimo es de 0";
 	}
 
 	protected void comprobarAntesDeEntrar(){	// TODO
