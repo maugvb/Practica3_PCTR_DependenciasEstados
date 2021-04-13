@@ -26,7 +26,7 @@ public class Parque implements IParque{
 			contadoresPersonasPuerta.put(puerta, 0);
 		}
 		
-		// TODO
+		this.comprobarAntesDeEntrar();
 		
 				
 		
@@ -79,12 +79,13 @@ public class Parque implements IParque{
 		assert contadorPersonasTotales >= 0 : "INV: El aforo m�nimo es de 0";
 	}
 
-	protected synchronized void comprobarAntesDeEntrar(){	// TODO
-		//
-		// TODO
-		//
-		if (this.contadorPersonasTotales == 50) {
-			wait();
+	protected synchronized void comprobarAntesDeEntrar() {
+		while (this.contadorPersonasTotales == this.aforoMax) {
+			try{
+				wait();
+			}catch(InterruptedException e) {
+				System.out.println(e);
+			}
 		}
 	}
 
