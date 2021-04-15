@@ -38,7 +38,7 @@ public class Parque implements IParque{
 		imprimirInfo(puerta, "Entrada");
 		
 		checkInvariante();
-		notifyAll();
+		notify();
 		
 		
 		
@@ -48,7 +48,7 @@ public class Parque implements IParque{
 	// TODO Método salirDelParque
 	//
 	@Override
-	public void salirDelParque(String puerta) {
+	public synchronized void salirDelParque(String puerta) {
 		// TODO Auto-generated method stub
 		if (contadoresPersonasPuerta.get(puerta) == null) {
 			contadoresPersonasPuerta.put(puerta, 0);
@@ -64,7 +64,7 @@ public class Parque implements IParque{
 		imprimirInfo(puerta, "Salida");
 
 		checkInvariante();
-		notifyAll();	
+		notify();	
 		
 	}
 	
