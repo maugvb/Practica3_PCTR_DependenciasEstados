@@ -37,7 +37,8 @@ public class Parque implements IParque{
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Entrada");
 		
-		// TODO
+		checkInvariante();
+		notifyAll();
 		
 		
 		// TODO
